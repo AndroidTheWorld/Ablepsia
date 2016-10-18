@@ -261,11 +261,11 @@ public abstract class Doctor {
         mProxyHashMap.put(activity, proxy);
 
         boolean needTreatment = false;
-        String anagraph = null;
+        String symptom = null;
         Annotation[] as = activity.getAnnotations();
         for (Annotation annotation : as) {
             if (annotation instanceof Symptom) {
-                anagraph = ((Symptom) annotation).value();
+                symptom = ((Symptom) annotation).value();
                 needTreatment = true;
                 break;
             }
@@ -277,10 +277,10 @@ public abstract class Doctor {
         }
 
         //获得治疗方案
-        Anagraph morbidity = treatment(anagraph, context, activity);
+        Anagraph morbidity = treatment(symptom, context, activity);
 
         if (null == morbidity) {
-            throw new UnsupportedOperationException("Don't know [" + anagraph + "] morbidity.");
+            throw new UnsupportedOperationException("Don't know [" + symptom + "] morbidity.");
         }
 
         if (morbidity.isNeedDetained()) {   //如果被拘留
@@ -291,7 +291,7 @@ public abstract class Doctor {
                 Ward.detained(morbidity.getDetainedKey(), new Ward.Patient(context, activity, mProxyHashMap.get(activity)));
             }
         } else {    //没有被拘留，立刻执行
-            immediately(context, activity, anagraph, morbidity);
+            immediately(context, activity, symptom, morbidity);
         }
     }
 
@@ -299,15 +299,15 @@ public abstract class Doctor {
      * 立刻执行
      * @param context context
      * @param activity Class<? extends Activity>
-     * @param anagraph 症状
+     * @param symptom 症状
      * @param morbidity 治疗方案
      */
-    private void immediately(Context context, Class<? extends Activity> activity, String anagraph, Anagraph morbidity) {
+    private void immediately(Context context, Class<? extends Activity> activity, String symptom, Anagraph morbidity) {
         if (morbidity.isAlive()) {
             open1(context, activity, mProxyHashMap.get(activity));
         } else if (morbidity.isDie()) {
             mProxyHashMap.remove(activity);
-            funeral(anagraph, context, activity);
+            funeral(symptom, context, activity);
         }
     }
 
@@ -349,11 +349,11 @@ public abstract class Doctor {
 
     /**
      * 葬礼
-     * @param anagraph 症状
+     * @param symptom 症状
      * @param context context
      * @param activity Class<? extends Activity>
      */
-    protected void funeral(String anagraph, Context context, Class<? extends Activity> activity) {
+    protected void funeral(String symptom, Context context, Class<? extends Activity> activity) {
 
         //调用 Anagraph.die() 后，会回调到这里
 
