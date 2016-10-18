@@ -27,7 +27,8 @@ dependencies {
 ```
 
 [**Ablepsia - 详细使用姿势**][1]
-你也可以 clone Demo 到本地运行，Demo 中有注释和用例
+  
+你也可以 clone Demo 到本地运行，Demo 中有用例
 
 
-[1]: https://github.com/Xiao187/Ablepsia
+[1]: https://segmentfault.com/a/1190000007201027
