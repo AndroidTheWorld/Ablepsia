@@ -7,4 +7,27 @@ so.原来的处理方式是你在打开 用户详情 之前判断是否已登陆
 
 对于上述栗子，Ablepsia 的处理姿势可谓是十分优雅，将 N 变为 1 次判断，自动重定向到登录页面，登录成功后自动跳转到 用户详情 页面。*.......目前 git 上的路由框架的实现方式，一旦你拦截此次跳转，此次跳转的生命就结束了，所以无法做到登录成功后自动跳转到 用户详情 页面*
 
-[**Ablepsia - git 项目地址**][https://segmentfault.com]
+#Use it#
+
+```java
+//项目的 build.gradle 添加如下
+allprojects {
+		repositories {
+			...
+			maven { url "https://jitpack.io" }
+		}
+	}
+```
+
+```
+// 模块的 build.gradle 添加如下
+dependencies {
+	        compile 'com.github.Xiao187:Ablepsia:v1.0.2'
+	}
+```
+
+[**Ablepsia - 详细使用姿势**][1]
+
+
+
+[1]: https://github.com/Xiao187/Ablepsia
