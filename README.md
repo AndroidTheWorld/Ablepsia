@@ -27,7 +27,7 @@ dependencies {
 ```
 
 [**Ablepsia - 详细使用姿势**][1]
-
+你也可以 clone Demo 到本地运行，Demo 中有注释和用例
 
 
 [1]: https://github.com/Xiao187/Ablepsia
