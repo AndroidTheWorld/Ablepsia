@@ -22,7 +22,7 @@ allprojects {
 ```
 // 模块的 build.gradle 添加如下
 dependencies {
-	        compile 'com.github.Xiao187:Ablepsia:v1.0.3'
+	        compile 'com.github.Xiao187:Ablepsia:v1.0.5'
 	}
 ```
 
