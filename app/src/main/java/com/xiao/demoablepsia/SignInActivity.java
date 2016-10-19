@@ -16,9 +16,21 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void signed(View view) {
-        Anagraph.detainedCompleting("先去登录");
+
         SignInStatus.changeStatus(true);
+
+        //释放
+        Anagraph.detainedCompleting("先去登录");
+
         finish();
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        //移除(处死)，尽可能优化内存，避免溢出
+        Anagraph.die("先去登录");
     }
 }
