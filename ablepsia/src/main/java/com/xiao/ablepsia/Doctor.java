@@ -289,6 +289,7 @@ public abstract class Doctor {
                 nurseDetained(morbidity.getChaperonage(), context, activity);
             } else {    //不处于监视状态
                 Ward.detained(morbidity.getDetainedKey(), new Ward.Patient(context, activity, mProxyHashMap.get(activity)));
+                mProxyHashMap.remove(activity);
             }
         } else {    //没有被拘留，立刻执行
             immediately(context, activity, symptom, morbidity);

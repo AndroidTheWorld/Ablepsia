@@ -62,6 +62,10 @@ public class Anagraph {
         return new Anagraph(sTYPE_DIE);
     }
 
+    public static void die(String key) {
+        Ward.die(key);
+    }
+
     /**
      * 拘留
      * 不推荐使用，此方法消耗资源，原理是采用子线程循环监视
